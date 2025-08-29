@@ -46,3 +46,17 @@ export async function addFavorite(payload) {
   }
   return res.json();
 }
+/* //////////////////////////////////////////////////////////////////////////
+ * PATCH of a favorite (example of an update)
+ */
+export async function updateFavorite(id, partial) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json; charset=UTF-8" },
+    body: JSON.stringify(partial),
+  });
+  if (!res.ok) {
+    throw new Error(`PATCH favorite failed HTTP ${res.status}`);
+  }
+  return res.json();
+}
