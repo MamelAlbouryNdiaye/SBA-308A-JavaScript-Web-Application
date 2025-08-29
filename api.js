@@ -29,3 +29,20 @@ export async function searchVerses(query, page = 1, size = 5) {
     meta: { total, perPage: size, currentPage: page },
   };
 }
+
+/**
+///////////////////////////////POST from a favorite to a fake backend (JSONPlaceholder) * /////////////////////////////
+  @param {{verse_key: string, text: string, query?: string}} payload
+ * @returns {Promise<Object>} réponse mockée
+ */
+export async function addFavorite(payload) {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json; charset=UTF-8" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    throw new Error(`POST favorite failed HTTP ${res.status}`);
+  }
+  return res.json();
+}
