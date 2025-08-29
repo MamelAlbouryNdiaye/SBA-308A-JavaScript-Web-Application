@@ -62,3 +62,28 @@ paginationEl.addEventListener("click", (e) => {
   const page = Number(btn.dataset.page || "1");
   runSearch(currentQuery, page);
 });
+
+///////////////// Add to favorites → POST JSONPlaceholder ///////////////////
+resultsEl.addEventListener("click", async (e) => {
+  const btn = e.target.closest(".fav-btn");
+  if (!btn) return;
+
+  const verse_key = btn.dataset.key;
+  const text = btn.dataset.text;
+
+  btn.disabled = true;
+  btn.textContent = "Saving…";
+
+  try {
+    const created = await addFavorite({ verse_key, text, query: currentQuery });
+    // Demo PATCH: mark as "starred: true"
+    await updateFavorite(created.id, { starred: true });
+
+    btn.textContent = "Saved ✓";
+  } catch (err) {
+    console.error(err);
+    btn.textContent = "Try again";
+    btn.disabled = false;
+    alert("Failed to save favorite (demo backend).");
+  }
+});
