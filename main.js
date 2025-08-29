@@ -54,3 +54,11 @@ searchInput.addEventListener("keydown", (e) => {
     searchBtn.click();
   }
 });
+
+///////////////// Pagination (event delegation) //////////////////////////////
+paginationEl.addEventListener("click", (e) => {
+  const btn = e.target.closest("button[data-page]");
+  if (!btn) return;
+  const page = Number(btn.dataset.page || "1");
+  runSearch(currentQuery, page);
+});
