@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quran Science Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+ 
+  <script type="module" src="main.js" defer></script>
+</head>
+<body>
+  <header class="container">
+    <h1>Quran Science Explorer</h1>
+    <p>Explore scientific references in the Quran (search in English)</p>
+  </header>
+
+  <main class="container">
+    <section class="search-bar">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search a keyword (e.g., water, universe, light)"
+        autocomplete="off"
+      />
+      <button id="searchBtn">Search</button>
+    </section>
+
+    <section id="status" class="status"></section>
+
+    <section id="results" class="results"></section>
+
+    <nav id="pagination" class="pagination"></nav>
+  </main>
+
+  <footer class="container">
+    <p> Quran  Api </p>
+  </footer>
+</body>
+</html>
