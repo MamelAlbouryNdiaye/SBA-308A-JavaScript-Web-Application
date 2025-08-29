@@ -48,3 +48,9 @@ searchBtn.addEventListener("click", () => {
   }
   runSearch(q, 1);
 });
+//////////////////////// Enter in input //////////////////////////////////////
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    searchBtn.click();
+  }
+});
