@@ -39,3 +39,12 @@ async function runSearch(query, page = 1) {
     setStatus("An error occurred while searching. Please try again.");
   }
 }
+///////////////////////// Click sur Search//////////////////////////////////
+searchBtn.addEventListener("click", () => {
+  const q = (searchInput.value || "").trim();
+  if (!q) {
+    setStatus("Please enter a search term.");
+    return;
+  }
+  runSearch(q, 1);
+});
