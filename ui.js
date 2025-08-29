@@ -33,3 +33,35 @@ export function renderVerses(verses, container) {
     })
     .join("");
 }
+
+/*/////////////////////////////////////////////////////////*
+ * Render of pagination
+ *////////////////////////////////////////////////////////
+export function renderPagination(meta, container) {
+  const total = Number(meta?.total ?? 0);
+  const perPage = Number(meta?.perPage ?? 5);
+  const current = Number(meta?.currentPage ?? 1);
+  const totalPages = Math.max(1, Math.ceil(total / perPage));
+
+  ////////////// 10 pages max for the demo /////////////////
+  const maxPages = Math.min(totalPages, 10);
+
+  const btns = [];
+  for (let p = 1; p <= maxPages; p++) {
+    btns.push(
+      `<button data-page="${p}" class="${p === current ? "active" : ""}">${p}</button>`
+    );
+  }
+  container.innerHTML = btns.join("");
+}
+
+/*///////////////////* Escape utilities (simple DOM security) */////////////////////////
+function escapeHtml(s) {
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+function escapeHtmlAttr(s) {
+  return escapeHtml(s).replaceAll(`"`, "&quot;").replaceAll("'", "&#39;");
+}
