@@ -1,5 +1,5 @@
 # SBA-308A-JavaScript-Web-Application
-#Quran Science Explorer
+# Quran Science Explorer
 
 An interactive web app that allows users to explore **Quranic verses** related to scientific topics (*water*, *universe*, *mountains*).  
 It uses the public [Quran.com API](https://quran.api-docs.io/) to fetch verses, display translations, support pagination, and save favorites.
